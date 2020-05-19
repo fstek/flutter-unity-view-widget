@@ -89,7 +89,12 @@ public class FlutterUnityView implements PlatformView, MethodChannel.MethodCallH
     @Override
     public void dispose() {
         if (UnityUtils.isUnityReady()) {
-            UnityUtils.getPlayer().quit();
+			// Quitting the unity player here crashes the Android app (it kills the app's process).
+			// So commenting out the following as a workaround. See the discussion of issue #46 in the
+			// original repository:
+			// https://github.com/snowballdigital/flutter-unity-view-widget/issues/46#issuecomment-547778005
+			
+            //UnityUtils.getPlayer().quit();
         }
     }
 
